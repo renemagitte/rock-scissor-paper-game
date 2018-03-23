@@ -10,38 +10,75 @@ function playRockScissorPaper(input){
     whoWinsAll();   
 }
 
+//function comparePlayRounds(arrayOfInput){
+//    for(let i = 0; i < arrayOfInput.length; i=i+2){
+//        
+//        let personA = arrayOfInput[i];
+//        let personB = arrayOfInput[i+1];
+//        
+//        if(personA == 'R' && personB == 'S'){
+//            personAPoints++;
+//            console.log("Person A wins");
+//        }else if(personA == 'S' && personB == 'S'){
+//            console.log("Draw!");     
+//        }else if(personA == 'P' && personB == 'S'){
+//            personBPoints++;
+//            console.log("Person B wins");
+//        }else if(personA == 'R' && personB == 'R'){
+//            console.log("Draw!");     
+//        }else if(personA == 'P' && personB == 'P'){
+//            console.log("Draw!");     
+//        }else if(personB == 'R' && personA == 'S'){
+//            personBPoints++;
+//            console.log("Person B wins");
+//        }else if(personB == 'P' && personA == 'S'){
+//            personAPoints++;
+//            console.log("Person A wins");
+//        }else if(personB == 'R' && personA == 'P'){
+//            personAPoints++;
+//            console.log("Person A wins");
+//        }else if(personA == 'R' && personB == 'P'){
+//            personBPoints++;
+//            console.log("Person B wins");
+//        }   
+//    } 
+//}
+
 function comparePlayRounds(arrayOfInput){
     for(let i = 0; i < arrayOfInput.length; i=i+2){
         
         let personA = arrayOfInput[i];
         let personB = arrayOfInput[i+1];
         
-        if(personA == 'R' && personB == 'S'){
+        if(personAWins(personA, personB)){
             personAPoints++;
             console.log("Person A wins");
-        }else if(personA == 'S' && personB == 'S'){
-            console.log("Draw!");     
-        }else if(personA == 'P' && personB == 'S'){
+        }else if(personBWins(personA, personB)){
             personBPoints++;
             console.log("Person B wins");
-        }else if(personA == 'R' && personB == 'R'){
+        }else if(draw(personA, personB)){
             console.log("Draw!");     
-        }else if(personA == 'P' && personB == 'P'){
-            console.log("Draw!");     
-        }else if(personB == 'R' && personA == 'S'){
-            personBPoints++;
-            console.log("Person B wins");
-        }else if(personB == 'P' && personA == 'S'){
-            personAPoints++;
-            console.log("Person A wins");
-        }else if(personB == 'R' && personA == 'P'){
-            personAPoints++;
-            console.log("Person A wins");
-        }else if(personA == 'R' && personB == 'P'){
-            personBPoints++;
-            console.log("Person B wins");
-        }   
+        }
     } 
+}
+
+
+function personAWins(personA, personB){
+    if((personA == 'R' && personB == 'S') || (personB == 'P' && personA == 'S') || (personB == 'R' && personA == 'P')){
+    return true;      
+    }
+}
+
+function personBWins(personA, personB){
+    if((personB == 'R' && personA == 'S') || (personB == 'S' && personA == 'P') || (personB == 'P' && personA == 'R')){
+    return true;      
+    }
+}
+
+function draw(personA, personB){
+    if((personA == 'R' && personB == 'R') || (personA == 'S' && personB == 'S') || (personA == 'P' && personB == 'P')){
+    return true;  
+    }
 }
 
 
@@ -61,7 +98,7 @@ function splitString(string){
     return result;
 }
 
-playRockScissorPaper("PRSRSPPRSSSP");
+playRockScissorPaper("SRPRSPSRSSRP");
 
 
 
