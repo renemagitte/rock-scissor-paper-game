@@ -2,8 +2,15 @@ var personAPoints = 0;
 var personBPoints = 0;
 
 function playRockScissorPaper(input){
+    
     let arrayOfInput = splitString(input);
     
+    comparePlayRounds(arrayOfInput);
+    
+    whoWinsAll();   
+}
+
+function comparePlayRounds(arrayOfInput){
     for(let i = 0; i < arrayOfInput.length; i=i+2){
         
         let personA = arrayOfInput[i];
@@ -27,10 +34,17 @@ function playRockScissorPaper(input){
         }else if(personB == 'P' && personA == 'S'){
             personAPoints++;
             console.log("Person A wins");
-        }  
-    }
-    whoWinsAll();   
+        }else if(personB == 'R' && personA == 'P'){
+            personAPoints++;
+            console.log("Person A wins");
+        }else if(personA == 'R' && personB == 'P'){
+            personBPoints++;
+            console.log("Person B wins");
+        }   
+    } 
 }
+
+
 
 function whoWinsAll(){
     if(personAPoints > personBPoints){
@@ -47,14 +61,7 @@ function splitString(string){
     return result;
 }
 
-
-
-
-
-
-
-
-playRockScissorPaper("PRSRSPPRSSSPR");
+playRockScissorPaper("PRSRSPPRSSSP");
 
 
 
